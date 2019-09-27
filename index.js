@@ -1,45 +1,50 @@
 class Todo {
   constructor(title, body) {
+    this.id = Random.uniqueId();
     this.title = title;
     this.body = body;
   }
 }
 
 class Todos {
-  static todos = [];
-  static todosHTMLList = document.querySelector('#todos-list');
+  static _todos = new Map();
+  static _todosHTMLList = document.querySelector('#todos-list');
 
   static addTodo(todo) {
-    this.todos.unshift(todo);
+    this._todos.set(todo.id, todo);
   }
 
-  static createTodoHTML(todo) {
-    const todoElement = document.createElement('li');
-    const todoTitle = document.createElement('h2');
-    const todoBody = document.createElement('p');
-
-    todoTitle.textContent = todo.title;
-    todoBody.textContent = todo.body;
-    todoElement.appendChild(todoTitle);
-    todoElement.appendChild(todoBody);
-
-    return todoElement;
+  static updateTodo(todo) {
+    this._todos.set(todo.id, todo);
   }
 
-  static refreshTodos() {
-    this.todos.forEach((todo) => {
-      this.todosHTMLList.appendChild(this.createTodoHTML(todo));
-    });
+  static deleteTodo(todo) {
+    this._todos.delete(todo.id);
   }
 }
 
-document.querySelector('#todo-form input[type="submit"]')
-  .onclick((evt) => {
+class TodosInterface {
+  static _addTodoForm = document.querySelector('#todo-form');
+
+  static initialize() {
+    this._addTodoForm.onsubmit = this.handleSubmit.bind(this);
+  }
+
+  static handleSubmit(evt) {
     evt.preventDefault();
 
-    const todoTitle = document.querySelector('#todo-title').value;
-    const todoBody = document.querySelector('#todo-body').textContent;
-    const newTodo = new Todo(todoTitle, todoBody);
 
-    Todos.addTodo(newTodo);
-  });
+  }
+}
+
+class AppEngine {
+  static _initialize() {
+    TodosInterface.initialize();
+  }
+
+  static start() {
+    this._initialize();
+  }
+}
+
+AppEngine.start();
