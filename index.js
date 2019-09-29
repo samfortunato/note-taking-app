@@ -1,3 +1,13 @@
+class DOMService {
+  static createElementFromString(htmlString) {
+    const newElementContainer = document.createElement('template');
+    newElementContainer.innerHTML = htmlString.trim();
+    const newElement = newElementContainer.content.firstChild;
+
+    return newElement;
+  }
+}
+
 class Todo {
   constructor(title, body) {
     this.id = 1;
@@ -55,19 +65,14 @@ class TodosComponent {
   }
 
   static _createTodoElement(todo) {
-    const newTodoElement = document.createElement('li');
-    newTodoElement.className = 'todo'
-    
-    const todoTitleElement = document.createElement('h3');
-    todoTitleElement.textContent = todo.title;
-    const todoCreatedAtElement = document.createElement('h4');
-    todoCreatedAtElement.textContent = todo.createdAt;
-    const todoBodyElement = document.createElement('p');
-    todoBodyElement.textContent = todo.body;
+    return DOMService.createElementFromString(`
+      <li class="todo">
+        <h3>${todo.title}</h3>
+        <h4>${todo.createdAt}</h4>
 
-    newTodoElement.append(todoTitleElement, todoCreatedAtElement, todoBodyElement);
-
-    return newTodoElement;
+        <p>${todo.body}</p>
+      </li>
+    `);
   }
 
   static _addNewTodoElementToList(todoEle) {
