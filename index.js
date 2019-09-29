@@ -51,6 +51,7 @@ class TodosComponent {
     TodosService.postTodo(newTodo);
 
     this._addNewTodoElementToList(this._createTodoElement(newTodo));
+    this._clearTodoForm();
   }
 
   static _createTodoElement(todo) {
@@ -71,6 +72,10 @@ class TodosComponent {
 
   static _addNewTodoElementToList(todoEle) {
     this._todosList.prepend(todoEle);
+  }
+
+  static _clearTodoForm() {
+    this._todoForm.reset();
   }
 }
 
