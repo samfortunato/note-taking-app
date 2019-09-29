@@ -31,7 +31,7 @@ textarea {
   box-sizing: border-box;
   width: 100%;
   height: 16rem;
-  
+
   resize: none;
   overflow: scroll;
 }
@@ -42,6 +42,7 @@ textarea {
 }
 
 .todo {
+  position: relative;
   margin-bottom: 1rem;
   border: 1px solid rgb(70, 70, 70);
   border-radius: var(--default-border-radius);
@@ -50,18 +51,45 @@ textarea {
   overflow-wrap: break-word;
 }
 
-#todos-list h3 {
+.todo h3 {
   margin: 0 0 0.5rem 0;
   font-size: 1rem;
 }
 
-#todos-list h4 {
+.todo h4 {
   margin: 0;
-  
+
   font-size: 0.75rem;
   font-weight: initial;
   font-style: italic;
   color: grey;
+}
+
+.todo .todo-menu-open {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+}
+
+#modal-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+}
+
+#todo-menu {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border: 1px solid rgb(70, 70, 70);
+  padding: 0.5rem 0.6rem;
+
+  line-height: 1.5;
+  background-color: black;
+  list-style: none;
 }
 
 #todo-form {

@@ -50,8 +50,12 @@ class TodosComponent {
   static initialize() {
     this._todosList.innerHTML = '';
     this._todosList.append(...TodosService.getTodos());
-    
+
     this._todoForm.onsubmit = this._onSubmit.bind(this);
+  }
+
+  static onDelete(evt) {
+
   }
 
   static _onSubmit(evt) {
@@ -65,14 +69,21 @@ class TodosComponent {
   }
 
   static _createTodoElement(todo) {
-    return DOMService.createElementFromString(`
+    const newTodoElement = DOMService.createElementFromString(`
       <li class="todo">
         <h3>${todo.title}</h3>
         <h4>${todo.createdAt}</h4>
 
         <p>${todo.body}</p>
+
+        <span class="todo-menu-open">...</span>
       </li>
     `);
+
+    newTodoElement.childNodes[7]
+      .onclick = TodosMenuComponent.openMenu.bind(TodosMenuComponent);
+
+    return newTodoElement;
   }
 
   static _addNewTodoElementToList(todoEle) {
@@ -84,11 +95,40 @@ class TodosComponent {
   }
 }
 
+class TodosMenuComponent {
+  static _menu = this._createMenu();
+
+  static openMenu() {
+    document.body.append(this._menu);
+  }
+
+  static closeMenu(evt) {
+    if (evt.target.id === 'modal-container') {
+      this._menu.remove();
+    }
+  }
+
+  static _createMenu() {
+    const menu = DOMService.createElementFromString(`
+      <div id="modal-container">
+        <ul id="todo-menu">
+          <li data-option="edit">Edit</li>
+          <li data-option="delete">Delete</li>
+        </ul>
+      </div>
+    `);
+
+    menu.onclick = this.closeMenu.bind(this);
+
+    return menu;
+  }
+}
+
 class AppController {
   static _components = [
     TodosComponent,
   ];
-  
+
   static start() {
     this._components.forEach(component => component.initialize());
   }
