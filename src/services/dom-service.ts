@@ -1,6 +1,6 @@
 import { Service } from "../models/service";
 
-export class DomService implements Service {
+export class DomService extends Service {
   static initialize(): void { }
 
   static createElementFromHTMLString(htmlString: string): HTMLElement {

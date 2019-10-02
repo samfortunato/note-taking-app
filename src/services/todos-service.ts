@@ -1,7 +1,7 @@
 import { Service } from '../models/service';
 import { Todo } from '../models/todo';
 
-export class TodosService implements Service {
+export class TodosService extends Service {
   private static todos: Map<number, Todo>;
 
   static initialize(): void {
