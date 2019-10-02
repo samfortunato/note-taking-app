@@ -1,4 +1,4 @@
-class DOMService {
+class DomService {
   static createElementFromHTMLString(htmlString) {
     const newElementContainer = document.createElement('template');
     newElementContainer.innerHTML = htmlString.trim();
@@ -69,7 +69,7 @@ class TodosComponent {
   }
 
   static _createTodoElement(todo) {
-    const newTodoElement = DOMService.createElementFromHTMLString(`
+    const newTodoElement = DomService.createElementFromHTMLString(`
       <li class="todo">
         <h3>${todo.title}</h3>
         <h4>${todo.createdAt}</h4>
@@ -109,7 +109,7 @@ class TodosMenuComponent {
   }
 
   static _createMenu() {
-    const menu = DOMService.createElementFromHTMLString(`
+    const menu = DomService.createElementFromHTMLString(`
       <div id="modal-container">
         <ul id="todo-menu">
           <li data-option="edit">Edit</li>
