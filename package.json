@@ -1,0 +1,27 @@
+{
+  "name": "todo-app-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile-scss": "sass --watch ./src/styles:./dist/styles",
+    "build": "webpack --watch --mode=development",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samfortunato/note-taking-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samfortunato/note-taking-app/issues"
+  },
+  "homepage": "https://github.com/samfortunato/note-taking-app#readme",
+  "devDependencies": {
+    "sass": "^1.23.0",
+    "ts-loader": "^6.2.0",
+    "typescript": "^3.6.3"
+  }
+}

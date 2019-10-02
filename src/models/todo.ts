@@ -8,6 +8,6 @@ export class Todo {
     this.id = 1;
     this.title = title;
     this.body = body;
-    this.createdAt = new Date().toLocaleString('en-US', { dateStyle: 'full', timeStyle: 'medium' });
+    this.createdAt = new Date().toLocaleString('en-US', { dateStyle: 'full', timeStyle: 'medium' } as any);
   }
 }

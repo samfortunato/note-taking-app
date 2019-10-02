@@ -12,13 +12,13 @@ export class TodosMenuComponent {
   }
 
   static closeMenu(evt: MouseEvent): void {
-    if (evt.target.id === 'modal-container') {
+    if ((evt.target as HTMLElement).id === 'modal-container') {
       this.menu.remove();
     }
   }
 
   private static createMenu(): HTMLDivElement {
-    const menu = DomService.createElementFromHTMLString<HTMLDivElement>(`
+    const menu = DomService.createElementFromHTMLString(`
       <div id="modal-container">
         <ul id="todo-menu">
           <li data-option="edit">Edit</li>
@@ -29,6 +29,6 @@ export class TodosMenuComponent {
 
     menu.onclick = this.closeMenu.bind(this);
 
-    return menu;
+    return menu as HTMLDivElement;
   }
 }

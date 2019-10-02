@@ -1,9 +1,11 @@
 export class DomService {
-  static createElementFromHTMLString<T>(htmlString: string): T {
+  static initialize(): void { }
+
+  static createElementFromHTMLString(htmlString: string): HTMLElement {
     const newElementContainer = document.createElement('template');
     newElementContainer.innerHTML = htmlString.trim();
     const newElement = newElementContainer.content.firstChild;
 
-    return newElement as T;
+    return newElement as HTMLElement;
   }
 }
