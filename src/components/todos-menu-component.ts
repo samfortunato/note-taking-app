@@ -1,6 +1,7 @@
 import { DomService } from '../services/dom-service';
+import { Component } from '../models/component';
 
-export class TodosMenuComponent {
+export class TodosMenuComponent implements Component {
   private static menu: HTMLDivElement;
 
   static initialize(): void {

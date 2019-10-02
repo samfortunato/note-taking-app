@@ -2,14 +2,16 @@ import { TodosService } from '../services/todos-service';
 import { DomService } from '../services/dom-service';
 import { TodosComponent } from '../components/todos-component';
 import { TodosMenuComponent } from '../components/todos-menu-component';
+import { Service } from '../models/service';
+import { Component } from '../models/component';
 
 export class AppEngine {
-  private static services = [
+  private static services: Service[] = [
     DomService,
     TodosService,
   ];
 
-  private static components = [
+  private static components: Component[] = [
     TodosComponent,
     TodosMenuComponent,
   ];

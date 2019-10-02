@@ -1,4 +1,6 @@
-export class DomService {
+import { Service } from "../models/service";
+
+export class DomService implements Service {
   static initialize(): void { }
 
   static createElementFromHTMLString(htmlString: string): HTMLElement {

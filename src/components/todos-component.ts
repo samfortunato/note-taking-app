@@ -1,9 +1,10 @@
 import { DomService } from '../services/dom-service';
 import { TodosService } from '../services/todos-service';
+import { Component } from '../models/component';
 import { TodosMenuComponent } from './todos-menu-component';
 import { Todo } from '../models/todo';
 
-export class TodosComponent {
+export class TodosComponent implements Component {
   private static todos: Todo[];
 
   private static todosList: HTMLUListElement;
